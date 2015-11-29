@@ -14,9 +14,9 @@ int main(){
 
 	/* below line pre increments the value at address of 'a' or say the value which pointer 'p' points at! 
 	  it is same as ++(*p)*/
-  cout<<++*p<<endl<<p<<endl;
-
-	cout<<*p<<endl;
+	  cout<<++*p<<endl<<p<<endl;
+	  
+	  cout<<*p<<endl;
 
 	/* below line is actually post incrementing the address of 'a' i.e., value of 'p'
 	  it is same as *(p++). Yes, *(++p) is also a valid statement and will give the value which 'p' will
