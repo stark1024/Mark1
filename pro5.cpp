@@ -1,0 +1,183 @@
+#include <iostream>
+#include <cstddef>
+using namespace std;
+
+struct node{
+	int info;
+	node *link;
+};
+
+struct node *start = NULL;
+int count = 0;
+
+void insb(){
+	node *n;
+	n = new node;
+	n->link = start;
+	start = n;
+	cout<<"enter data:\t";
+	int data;
+	cin>>data;
+	n->info = data;
+	count+=1;
+}
+
+void insp(){
+	cout<<"enter position:\t";
+	int p;
+	cin>>p;
+	if(p<=count){
+		if (p==0){
+			insb();
+		}
+		if (p>0){
+			int i=0;
+			node *next;
+			next = start;
+			while(i!=p-1){
+				next = next->link;
+				i++;
+			}
+			node *n;
+			n = new node;
+			n->link = next->link;
+			next->link = n;
+			int data;
+			cout<<"enter data:\t";
+			cin>>data;
+			n->info = data;
+			count+=1;
+		}
+		if (p<0){
+			cout<<"specified position does not exist!";
+		}
+	} else{
+		cout<<"specified position does not exist!";
+	}
+}
+
+void inse(){
+	if(count>0){
+		int i=0;
+		node *next;
+		next = start;
+		while(i!=count-1){
+			next = next->link;
+			i++;
+		}
+		node *n;
+		n = new node;
+		n->link = next->link;
+		next->link = n;
+		int data;
+		cout<<"enter data:\t";
+		cin>>data;
+		n->info = data;
+		count+=1;
+	} else
+		insb();
+}
+
+void delb(){
+	node *temp;
+	temp = start;
+	start = start->link;
+	delete temp;
+	count-=1;
+	cout<<"\nentry deleted";
+}
+
+void delp(){
+	cout<<"enter position:\t";
+	int p;
+	cin>>p;
+	if(p<count){
+		if (p==0){
+			delb();
+		}
+		if (p>0){
+			int i=0;
+			node *next;
+			next = start;
+			while(i!=p-1){
+				next = next->link;
+				i++;
+			}
+			node *temp;
+			temp = next->link;
+			next->link = temp->link;
+			delete temp;
+			count-=1;
+			cout<<"\nentry deleted";
+		}
+		if (p<0){
+			cout<<"specified position does not exist!";
+		}
+	} else{
+		cout<<"specified position does not exist!";
+	}
+}
+
+void dele(){
+	if(count>1){
+		int i=0;
+		node *next;
+		next = start;
+		while(i!=count-1){
+			next = next->link;
+			i++;
+		}
+		node *temp;
+		temp = next->link;
+		next->link = NULL;
+		delete temp;
+		count-=1;
+		cout<<"\nentry deleted";
+	} else
+		delb();
+}
+
+void display(){
+	if(count>0){
+		int i = 0;
+		node *next;
+		int data = start->info;
+		cout<<data<<"\t";
+		next = start->link;
+		while(i<count-1){
+			data = next->info;
+			cout<<data<<"\t";
+			next = next->link;
+			i++;
+		}
+	}else
+		cout<<"\nempty list";
+}
+
+int main(){
+	int c = 0;
+	while(c!=8){
+		cout<<"\nEnter choice:\n1.insert at beginning\n2.insert at a position\n3.insert at the end\n4.delete at beginning\n5.delete at a position\n6.delete at end\n7.display\n8.exit";
+		cin>>c;
+		switch(c){
+			case 1: insb();
+				break;
+			case 2: insp();
+				break;
+			case 3: inse();
+				break;
+			case 4: delb();
+				break;
+			case 5: delp();
+				break;
+			case 6: dele();
+				break;
+			case 7: display();
+				break;
+			case 8: "exit";
+				break;
+			default: cout<<"incorrect choice";
+		}
+	}
+return 0;	
+}
