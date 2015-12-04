@@ -2,18 +2,19 @@
 #include <cstddef>
 using namespace std;
 
+//creating a node of linked list using structure
 struct node{
 	int info;
 	node *link;
 };
 
-struct node *start = NULL;
+struct node *start = NULL;    //creating a pointer of 'node' type
 int count = 0;
 
 void insb(){
 	node *n;
-	n = new node;
-	n->link = start;
+	n = new node;    //assigning a memory location of required size to the 'node' type pointer 'n';
+	n->link = start;     //'->' is used to access a member of the structure
 	start = n;
 	cout<<"enter data:\t";
 	int data;
@@ -82,7 +83,7 @@ void delb(){
 	node *temp;
 	temp = start;
 	start = start->link;
-	delete temp;
+	delete temp;     //'delete' keyword is used to clear the memory allocated to a node
 	count-=1;
 	cout<<"\nentry deleted";
 }
