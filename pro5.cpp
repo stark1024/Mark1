@@ -11,7 +11,7 @@ struct node{
 struct node *start = NULL;    //creating a pointer of 'node' type
 int count = 0;
 
-void insb(){
+void insb(){	//insertion at beginning
 	node *n;
 	n = new node;    //assigning a memory location of required size to the 'node' type pointer 'n';
 	n->link = start;     //'->' is used to access a member of the structure
@@ -23,7 +23,7 @@ void insb(){
 	count+=1;
 }
 
-void insp(){
+void insp(){	//insertion at a position
 	cout<<"enter position:\t";
 	int p;
 	cin>>p;
@@ -57,7 +57,7 @@ void insp(){
 	}
 }
 
-void inse(){
+void inse(){	//insertion at the end
 	if(count>0){
 		int i=0;
 		node *next;
@@ -79,7 +79,7 @@ void inse(){
 		insb();
 }
 
-void delb(){
+void delb(){	//deletion at beginning
 	node *temp;
 	temp = start;
 	start = start->link;
@@ -88,7 +88,7 @@ void delb(){
 	cout<<"\nentry deleted";
 }
 
-void delp(){
+void delp(){	//deletion at a position
 	cout<<"enter position:\t";
 	int p;
 	cin>>p;
@@ -119,7 +119,7 @@ void delp(){
 	}
 }
 
-void dele(){
+void dele(){	//deletion at the end
 	if(count>1){
 		int i=0;
 		node *next;
