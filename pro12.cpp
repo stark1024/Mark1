@@ -5,15 +5,9 @@ int main(){
 	cout<<"enter no.\n";
 	int n;
 	cin>>n;
-	while(n>=10){
-		s=0;
-		while(n!=0){
-			x = n%10;
-			s = s+x;
-			n = n/10;
-		}
-		n = s;
-	}
+	n=n%9;
+	if(n==0)
+		n=9;
 	cout<<"\n"<<n;
 	return 0;
 }
