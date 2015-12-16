@@ -80,62 +80,71 @@ void inse(){	//insertion at the end
 }
 
 void delb(){	//deletion at beginning
-	node *temp;
-	temp = start;
-	start = start->link;
-	delete temp;     //'delete' keyword is used to clear the memory allocated to a node
-	count-=1;
-	cout<<"\nentry deleted";
+	if(count>0){
+		node *temp;
+		temp = start;
+		start = start->link;
+		delete temp;     //'delete' keyword is used to clear the memory allocated to a node
+		count-=1;
+		cout<<"\nentry deleted";
+	} else
+		cout<<"\nlist is empty";
 }
 
 void delp(){	//deletion at a position
-	cout<<"enter position:\t";
-	int p;
-	cin>>p;
-	if(p<count){
-		if (p==0){
-			delb();
+	if(count>0){
+		cout<<"enter position:\t";
+		int p;
+		cin>>p;
+		if(p<count){
+			if (p==0){
+				delb();
+			}
+			if (p>0){
+				int i=0;
+				node *next;
+				next = start;
+				while(i!=p-1){
+					next = next->link;
+					i++;
+				}
+				node *temp;
+				temp = next->link;
+				next->link = temp->link;
+				delete temp;
+				count-=1;
+				cout<<"\nentry deleted";
+			}
+			if (p<0){
+				cout<<"specified position does not exist!";
+			}
+		} else{	
+			cout<<"specified position does not exist!";
 		}
-		if (p>0){
+	} else
+		cout<<"\nlist is empty";
+}
+
+void dele(){	//deletion at the end
+	if(count>0){
+		if(count>1){
 			int i=0;
 			node *next;
 			next = start;
-			while(i!=p-1){
+			while(i!=count-1){
 				next = next->link;
 				i++;
 			}
 			node *temp;
 			temp = next->link;
-			next->link = temp->link;
+			next->link = NULL;
 			delete temp;
 			count-=1;
 			cout<<"\nentry deleted";
-		}
-		if (p<0){
-			cout<<"specified position does not exist!";
-		}
-	} else{
-		cout<<"specified position does not exist!";
-	}
-}
-
-void dele(){	//deletion at the end
-	if(count>1){
-		int i=0;
-		node *next;
-		next = start;
-		while(i!=count-1){
-			next = next->link;
-			i++;
-		}
-		node *temp;
-		temp = next->link;
-		next->link = NULL;
-		delete temp;
-		count-=1;
-		cout<<"\nentry deleted";
+		} else
+			delb();
 	} else
-		delb();
+		cout<<"\nlist is empty";
 }
 
 void display(){
