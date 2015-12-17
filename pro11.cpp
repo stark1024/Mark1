@@ -3,6 +3,8 @@
 //#include <tuple>
 using namespace std;
 
+//Aim: How to return more than one value in a function?
+//here's a concept i have applied, but its not working.
 std::pair<int, int> min(int b[], int x, int y){
 	int c = b[x], i, k;
 	for(i=x; i<y; i++){
