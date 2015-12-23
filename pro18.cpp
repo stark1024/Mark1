@@ -15,13 +15,13 @@ int main(){
 	cout<<"\nafter sorting:\n";
 	for(i=0; i<10; i++){
 		s=a[i];
-		for(j=0; j<i; j++){
+		for(j=0; j<=i; j++){
 			if(a[j]>a[i]){
 				loc=j;
 				break;
 			}
 		}
-		for(j=i; j>loc; j--){
+		for(j=i; j>=loc; j--){
 			a[j]=a[j-1];
 		}
 		a[loc]=s;
