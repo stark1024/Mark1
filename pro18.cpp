@@ -16,7 +16,7 @@ int main(){
 	for(i=0; i<10; i++){
 		s=a[i];
 		for(j=0; j<=i; j++){
-			if(a[j]>a[i]){
+			if(a[j]>=a[i]){
 				loc=j;
 				break;
 			}
