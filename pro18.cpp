@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-	int i, j, loc, s;
+	int i, j, s;
 	int a[10];
 	cout<<"enter elements in array:\n";
 	for(i=0; i<10; i++){
@@ -15,16 +15,10 @@ int main(){
 	cout<<"\nafter sorting:\n";
 	for(i=0; i<10; i++){
 		s=a[i];
-		for(j=0; j<=i; j++){
-			if(a[j]>=a[i]){
-				loc=j;
-				break;
-			}
+		for(j=i; s<a[j]; j--){
+		        a[j]=a[j-1]; 
 		}
-		for(j=i; j>=loc; j--){
-			a[j]=a[j-1];
-		}
-		a[loc]=s;
+		a[j+1]=s;
 	}
 	for(i=0; i<10; i++){
 		cout<<a[i]<<"\t";
