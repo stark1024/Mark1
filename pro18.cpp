@@ -13,9 +13,9 @@ int main(){
 		cout<<a[i]<<"\t";
 	}
 	cout<<"\nafter sorting:\n";
-	for(i=0; i<10; i++){
+	for(i=1; i<10; i++){
 		s=a[i];
-		for(j=i; s<a[j]; j--){
+		for(j=i; s<=a[j]; j--){
 		        a[j]=a[j-1]; 
 		}
 		a[j+1]=s;
