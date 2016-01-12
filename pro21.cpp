@@ -12,8 +12,8 @@ int quick(int a[], int b, int e, int loc){
 	while(a[loc]<=a[right] && loc!=right){
 		right-=1;
 	}
-	if(loc==right)
-		return 0;
+	/*if(loc==right)
+		return 0;*/
 	if(a[loc]>a[right]){
 		int t = a[loc];
 		a[loc] = a[right];
@@ -23,8 +23,8 @@ int quick(int a[], int b, int e, int loc){
 	while(a[left]<=a[loc] && left!=loc){
 		left+=1;
 	}
-	if(loc==left)
-		return 0;
+	/*if(loc==left)
+		return 0;*/
 	if(a[loc]<a[left]){
 		int t = a[loc];
 		a[loc] = a[left];
