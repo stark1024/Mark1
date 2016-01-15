@@ -8,7 +8,7 @@ int quick(int a[], int b, int e, int loc){
 	left = b;
 	right = e;
 	loc = b;
-	while(loc==right || loc==left){
+	while(loc!=right || loc!=left){
 	while(a[loc]<=a[right] && loc!=right){
 		right-=1;
 	}
