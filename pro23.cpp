@@ -11,7 +11,7 @@ struct node{
 struct node *root = NULL;
 int count = 0;
 
-void max(){
+void tree(){
 	node *n;
 	n = new node;
 	n->l = NULL;
