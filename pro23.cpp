@@ -38,10 +38,11 @@ void tree_ins(){
 		}
 		if(pr->info <= data){
 				pr->r = n;
-			}
-			if(pr->info > data){
+		}
+		if(pr->info > data){
 				pr->l = n;
-			}
+		}
+		count+=1;
 	}
 }
 
