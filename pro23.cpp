@@ -9,8 +9,8 @@ struct node{
 };
 
 struct node *root = NULL;
-struct node *p = NULL;
-struct node *pr = NULL;
+//struct node *p = NULL;
+//struct node *pr = NULL;
 int count = 0;
 
 void tree_ins(){
@@ -25,6 +25,8 @@ void tree_ins(){
 	if(count==0){
 		root = n;
 	} else{
+		node *p;
+		node *pr;
 		p = root;
 		while(p!=NULL){
 			if(p->info <= data){
@@ -46,11 +48,48 @@ void tree_ins(){
 	}
 }
 
+void step(node *pt, int t, node *st[]){
+	pt=st[t];
+	t-=1;
+	int data;
+	while(pt!=NULL){
+		data = pt->info;
+		cout<<data;
+		if((pt->r) != NULL){
+			pt=pt->r;
+			step(pt, t, st);
+		}
+		pt=st[t];
+		t-=1;
+	}
+}
+
+void tree_dis(){
+	node *s[count];
+	int top=0;
+	s[top] = NULL;
+	node *p;
+	p = root;
+	while(p!=NULL){
+		top+=1;
+		s[top]=p;
+		p=p->l;
+	}
+	step(p, top, s);
+}
+
 int main(){
 	int c=1;
 	while(c!=0){
-		tree_ins();
-		cout<<"Want to add another value? (1=yes, 0=no)";
+		switch(c){
+			case 1:
+				tree_ins();
+				break;
+			case 2:
+				tree_dis();
+				break;
+			default: cout<<"Wrong input!";
+		}
 		cin>>c;
 	}
 	return 0;
