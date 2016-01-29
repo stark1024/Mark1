@@ -51,6 +51,32 @@ void display(){
 	if(count!=0){
 	int i = 0;
 	node *next;
+	
+	cout<<"\nin ascending order\n";
+	int datal, datar;
+	node *cur;
+	i=0;
+	while(i<count-1){
+		int j;
+		cur = front;
+		for(j=0; j<count-1; j++){
+			next = cur->link;
+			datal = cur->info;
+			datar = next->info;
+			if(datal>datar){
+				int t;
+				t=datal;
+				datal=datar;
+				datar=t;
+				cur->info = datal;
+				next->info = datar;
+			}
+			cur = cur->link;
+		}
+		i++;
+	}
+	
+	i=0;
 	int data = front->info;
 	cout<<data<<"\t";
 	next = front->link;
