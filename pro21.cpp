@@ -1,44 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int beg, end, top=-1, A[10], l;
-
-int quick(int a[], int b, int e, int loc){
-	int left, right, i;
-	left = b;
-	right = e;
-	loc = b;
-	while(loc!=right || loc!=left){
-	while(a[loc]<=a[right] && loc!=right){
-		right-=1;
-	}
-	/*if(loc==right)
-		return 0;*/
-	if(a[loc]>a[right]){
-		int t = a[loc];
-		a[loc] = a[right];
-		a[right] = t;
-		loc = right;
-	}
-	while(a[left]<=a[loc] && left!=loc){
-		left+=1;
-	}
-	/*if(loc==left)
-		return 0;*/
-	if(a[loc]<a[left]){
-		int t = a[loc];
-		a[loc] = a[left];
-		a[left] = t;
-		loc = left;
-	}
-	}
-}
+int beg, end, top=-1, a[10], loc;
 
 int main(){
 	int c=1;
 	while(c!=0){
-	int i, j, s;
-	int a[10];
+	int i, j;
+	int left, right;
 	cout<<"enter elements in array:\n";
 	for(i=0; i<10; i++){
 		cin>>a[i];
@@ -49,7 +18,7 @@ int main(){
 	}
 	cout<<"\nafter sorting:\n";
 
-
+	///sorting by quick sort technique
 	int upper[10], lower[10];
 	top+=1;
 	lower[top]=0, upper[top]=9;
@@ -57,19 +26,49 @@ int main(){
 		beg = lower[top];
 		end = upper[top];
 		top-=1;
-		quick(A, beg, end, l);
-		if(beg<l-1){
+
+		//quick(a, beg, end, l);
+		left = beg;
+		right = end;
+		loc = beg;
+		while(loc!=right || loc!=left){
+			while(a[loc]<=a[right] && loc!=right){
+				right-=1;
+			}
+			if(loc==right)
+				break;
+			if(a[loc]>a[right]){
+				int t = a[loc];
+				a[loc] = a[right];
+				a[right] = t;
+				loc = right;
+			}
+			while(a[left]<=a[loc] && left!=loc){
+				left+=1;
+			}
+			if(loc==left)
+				break;
+			if(a[loc]<a[left]){
+				int t = a[loc];
+				a[loc] = a[left];
+				a[left] = t;
+				loc = left;
+			}
+		}
+		//quick function ends here
+
+		if(beg<loc-1){
 			top+=1;
 			lower[top] = beg;
-			upper[top] = l-1;
+			upper[top] = loc-1;
 		}
-		if(l+1<end){
+		if(loc+1<end){
 			top+=1;
-			lower[top] = l+1;
+			lower[top] = loc+1;
 			upper[top] = end;
 		}
 	}
-
+	//sorting ends here
 
 	for(i=0; i<10; i++){
 		cout<<a[i]<<"\t";
