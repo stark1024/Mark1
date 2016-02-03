@@ -1,45 +1,26 @@
 #include <iostream>
-#include <utility>
-//#include <tuple>
 using namespace std;
 
-//Aim: How to return more than one value in a function?
-//here's a concept i have applied, but its not working.
-std::pair<int, int> min(int b[], int x, int y){
-	int c = b[x], i, k;
-	for(i=x; i<y; i++){
-		if(c>=b[i]){
-			c = b[i];
-			k = i;
-		}
-	}
-	return std::make_pair(c, k);
+//I applied the concept of structure! However I don't know if it is efficient or not.
+struct x{
+	int a, b;
+};
+
+struct x func(int l, int m){
+	struct x *j;
+	j = new x;
+	j->a = l+m;
+	j->b = l-m;
+	return (*j);
 }
 
 int main(){
-	int n, a[n], i, j, m, r;
-	cout<<"enter no. of elements in array\n";
-	cin>>n;
-	cout<<"enter all the elements\n";
-	for(i=0; i<n; i++)
-		cin>>a[i];
-
-	cout<<"your array is:\n";
-	for(i=0; i<n; i++)
-		cout<<a[i]<<"\t";
-
-	cout<<"\nafter sorting:\n";
-	for(i=0; i<n; i++){
-		std::pair<int, int> p = min(a, i, n);
-		m = p.first;
-		r = p.second;
-		//std::tuple(m, r) = min(a, i, n);
-		for(j=r; j>i; j--){
-			a[j] = a[j-1];
-		}
-		a[i] = m;
-	}
-	for(i=0; i<n; i++)
-		cout<<a[i]<<"\t";
+	cout<<"enter 2 values: ";
+	int p,q;
+	cin>>p>>q;
+	x *k = new x;
+	*k = func(p,q);
+	cout<<"sum="<<(k->a)<<endl;
+	cout<<"diff="<<(k->b);
 return 0;
 }
