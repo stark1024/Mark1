@@ -27,7 +27,8 @@ int main(){
 		end = upper[top];
 		top-=1;
 
-		//quick(a, beg, end, l);
+		//quick(a, beg, end, l); <---this is what I removed!
+		//below is the code which was previously in a quick function.
 		left = beg;
 		right = end;
 		loc = beg;
