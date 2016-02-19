@@ -2,18 +2,18 @@
 using namespace std;
 
 int main(){
-	int a[5] = {9, 5, 2, 1, 0};
-	int b[5] = {8, 7, 6, 4, 3};
+	int a[5] = {0, 1, 2, 5, 9};
+	int b[5] = {3, 4, 6, 7, 8};
 	int c[10];
 	int i, j, k;
 	i=j=k=0;
 	while(i<5 && j<5){
-		if(a[i]>=b[j]){
+		if(a[i]<=b[j]){
 			c[k]=a[i];
 			i++;
 			k++;
 		}
-		if(b[j]>a[i]){
+		if(b[j]<a[i]){
 			c[k]=b[j];
 			j++;
 			k++;
